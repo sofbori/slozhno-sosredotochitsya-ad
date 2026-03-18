@@ -2,4 +2,241 @@
 
 .page {
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  background-image: var(--path-background-image);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+h2 {
+  font-size: var(--font-size);
+  color: var(--h2-color);
+}
+p {
+  color: var(--main-text-color);
+  margin-bottom: var(--margin-under-question);
+}
+.header {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto; /* левая часть растягивается, правая — авто */
+  grid-template-rows: auto auto auto; /* первая строка: REC и меню, вторая: заголовок */
+  gap: 0.5rem;
+  height: 100vh;
+}
+.decorated-zone {
+  padding: var(  --main-padding);
+}
+.rec {
+  position: absolute;
+  top: var(  --main-padding);
+  right: calc(var(--main-padding) + 9px);
+  color: var(--accent-color);
+}
+
+.rec::after {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-left: 10px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  filter: blur(1px);
+}
+
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  top: var(  --main-padding);
+  right: var(  --main-padding);
+  width: 25px;
+  height: 25px;
+  border-top: 1px solid var(--accent-color);
+  border-right: 1px solid var(--accent-color);
+}
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  bottom: var(  --main-padding);
+  left: var(  --main-padding);
+  width: 25px;
+  height: 25px;
+  border-bottom: 1px solid var(--accent-color);
+  border-left: 1px solid var(--accent-color);
+}
+
+.header__theme-menu-button {
+  padding: 1.5px 13px; /* внутренние отступы */
+  font-size: var(--font-size); /* размер текста */
+color: var(--h2-color); /* цвет текста */
+  background-color: transparent; /* цвет фона */
+  border: none; /* убираем стандартный бордер */
+  text-transform: lowercase;
+}
+.header__theme-menu-button:hover {
+  border: 1px solid color-mix(in srgb, var(--h2-color), transparent 40%);
+}
+.header__theme-menu-button:focus {
+  border-bottom: 1px solid var(--h2-color);
+}
+.header__theme-menu-button_active {
+  border: 2px solid var(--h2-color);
+  pointer-events: none;
+}
+.header__title {
+  grid-column: 1 / -1; /* занимает всю ширину */
+  font-size: var(--font-size-title);
+  text-shadow: 4px 4px 0 var(--accent-color);
+  line-height: 83%;
+  color: var(--title-color);
+}
+.description {
+  grid-row: 3;
+  height: fit-content;
+  grid-column: 1 / -1;
+  justify-self: center;
+  text-align: start;
+}
+.title-decor {
+  background-color: var(--accent-color);
+  color: var(--fill-text-color);
+}
+.header__theme-menu {
+  grid-row: 1;
+  grid-column: 2;
+  justify-self: end; /* прижимаем к правому краю */
+  align-self: center; /* по середине*/
+}
+.main-content {
+  padding: var(--main-padding);
+  margin-top: 40px;
+  box-sizing: border-box;
+}
+.topic-block {
+  margin-bottom: var(--margin-between-content);
+}
+
+.topic-answer {
+  margin-bottom: var(--margin-topic-answer);
+}
+.question {
+  margin-bottom: var(--margin-under-question);
+}
+.margin{
+  margin-bottom: 20px;
+}
+.normal-text{
+  font-weight: normal;
+}
+.link {
+  text-decoration: none;
+  text-shadow: 2px 2px 0 var(--accent-color);
+}
+.link:hover {
+  text-decoration: underline;
+}
+.link:focus {
+  border: 2px solid var(--main-text-color);
+}
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr; /* одна колонка на мобильных */
+  gap: 10px; /* расстояние между изображениями */
+}
+.gallery img {
+  width: 100%; /* адаптивно под размер колонки */
+  display: block; /* убираем лишние отступы под inline */
+}
+
+footer .header__title {
+  align-self: center;
+  justify-self: center;
+  grid-row: 1 / -1;
+    text-shadow: 2px 2px 0 var(--accent-color);
+
+}
+@media (width >=768px) {
+  :root{
+    --font-size-title:clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+      --main-padding: 20px;
+  }
+  .gallery{
+    margin-top: 20px;
+  }
+  .header {
+    grid-template-columns: 1fr 1fr;
+  }
+  .description {
+    grid-column: 2;
+  }
+  .topic-block {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+  }
+  .question {
+    grid-column: 1;
+  }
+  .answer-text {
+    grid-column: 2;
+  }
+
+  .topic-block:nth-child(2) .answer-text {
+    grid-column: 1/-1;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+    gap: 20px;
+    grid-auto-rows: auto; /* фиксированная высота строк, можно менять */
+  }
+
+  .gallery img:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+  .gallery img:nth-child(2) {
+    grid-column: 3;
+    grid-row: 1 / 3; /* занимает две строки */
+  }
+  .gallery img:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2 / 4; /* занимает две строки */
+  }
+  .gallery img:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .gallery img:nth-child(5) {
+    grid-column: 2 / 4;
+    grid-row: 3;
+  }
+
+  .gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* чтобы картинки не растягивались */
+  }
+}
+@media (width >=1024px){
+  .topic-block:nth-child(2) .answer-text {
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+gap:var(--margin-under-question);
+  }
+    .header__theme-menu {
+    grid-column: 1 / -1; /* занимает всю ширину шапки */
+    justify-self: center; /* центрируем сам блок по горизонтали */
+    width: 100%;          /* растягиваем на всю ширину колонки */
+    align-self: start;
+  }
+    .header__theme-menu-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 }
