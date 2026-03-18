@@ -28,9 +28,16 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --accent-color: #ff8dcb;
-    --title-color: #ffc2e6;
-    --main-text: #353430;
+  --accent-color: #ff8dcb;
+  --title-color: #ffc2e6;
+
+  --main-text-color: #353430;
+  --fill-text-color: #353430;
+
+  --h2-color: #353430;
     --path-background-image: url("../images/cover-image-light.png");
   }
+  .theme-light .rec {
+  display: none;
+}
 }

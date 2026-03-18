@@ -5,15 +5,16 @@
 :root {
   --accent-color: #ff0070;
   --title-color: #db00ff;
-  --main-text-color: #f1b2ce;
+
   --h2-color: #ff0070;
   --fill-text-color: #000028;
   --main-text-color: #ff0070;
   --path-background-image: url("../images/cover-image-dark.png");
   --main-padding: 10px;
   --font-size: 18px;
-  --margin-between-content: 30px;
+  --margin-between-content: 50px;
   --margin-under-question:20px;
   --margin-topic-answer:10px;
   --font-size-title:clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+
 }
